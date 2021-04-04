@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Machine Status Predictor</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='machine-banner.png') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+		<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	</head>
+
+    <body>
+
+        <!-- Website Title -->
+		<div class="container">
+            <h2 class='container-heading'><span class="heading_font">Machine Status Predictor</span></h2>
+            <div class='description'>
+    			<p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+    		</div>
+    	</div>
+
+		<!-- Result -->
+		<div class="results">
+			{% if prediction[0][0]==1 %}
+				<h1>Prediction: <span class='danger'>Oops! Machine Failure</span></h1>
+				<img class="gif" src="{{ url_for('static', filename='diabetes.webp') }}" alt="Diabetes Image">
+            {% elif prediction[0][0]==0 %}
+				<h1>Prediction: <span class='safe'>Great! Machine is in good condition.</span></h1>
+				<img class="gif1" src="{{ url_for('static', filename='no-diabetes.webp') }}" alt="Not Diabetes Image">
+            {% endif %}
+            {% if prediction[0][1]==1 %}
+				<h1>Reason for failure: <span class='danger'> Tool Wear Failure(TWF)</span></h1>
+            {% endif %}
+            {% if prediction[0][2]==1 %}
+				<h1>Reason for failure: <span class='danger'> Heat Dissipation Failure(HDF)</span></h1>
+            {% endif %}
+            {% if prediction[0][3]==1 %}
+				<h1>Reason for failure: <span class='danger'> Power Failure(PWF)</span></h1>
+            {% endif %}
+            {% if prediction[0][4]==1 %}
+				<h1>Reason for failure: <span class='danger'> Overstrain Failure(OSF)</span></h1>
+            {% endif %}
+            {% if prediction[0][5]==1 %}
+				<h1>Reason for failure: <span class='danger'> Random Failures(RNF)</span></h1>
+            {% endif %}
+            
+		</div>
+        <!-- Footer -->
+       <div class='footer'>
+           <div class="contact">
+               <a target="_blank" href="https://github.com/mayurghate/Maintainance.git"><i class="fab fa-github fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/mayurghate"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+           </div>
+           <p class='footer-description'>Made with ❤️ by Mayur Ghate.</p>
+       </div>
+
+	</body>
+</html>
